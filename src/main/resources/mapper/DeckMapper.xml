@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.tft.mapper.DeckMapper">
+  <resultMap id="deckMap" type="DeckVo">
+    <id property="id" column="id"/>
+    <result property="name" column="name"/>
+    <result property="tier" column="tier"/>
+    <result property="description" column="description"/>
+    <result property="championIds" column="champion_ids"/>
+    <result property="hiddenRecommend" column="hidden_recommend"/>
+  </resultMap>
+  <select id="findAll" resultMap="deckMap">SELECT * FROM deck ORDER BY tier, name</select>
+  <select id="findHiddenRecommend" resultMap="deckMap">SELECT * FROM deck WHERE hidden_recommend = 1 ORDER BY id DESC</select>
+  <select id="findById" parameterType="long" resultMap="deckMap">SELECT * FROM deck WHERE id = #{id}</select>
+  <insert id="insert" parameterType="DeckVo" useGeneratedKeys="true" keyProperty="id">INSERT INTO deck(name, tier, description, champion_ids, hidden_recommend) VALUES(#{name}, #{tier}, #{description}, #{championIds}, #{hiddenRecommend})</insert>
+  <update id="update" parameterType="DeckVo">UPDATE deck SET name=#{name}, tier=#{tier}, description=#{description}, champion_ids=#{championIds}, hidden_recommend=#{hiddenRecommend} WHERE id=#{id}</update>
+  <delete id="delete" parameterType="long">DELETE FROM deck WHERE id=#{id}</delete>
+</mapper>
