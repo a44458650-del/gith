@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.tft.mapper.ChampionMapper">
+  <select id="findAll" resultType="Champion">SELECT * FROM champion ORDER BY id DESC</select>
+  <select id="findById" parameterType="long" resultType="Champion">SELECT * FROM champion WHERE id=#{id}</select>
+  <insert id="insert" parameterType="Champion">INSERT INTO champion(name,cost,traits) VALUES(#{name},#{cost},#{traits})</insert>
+  <update id="update" parameterType="Champion">UPDATE champion SET name=#{name},cost=#{cost},traits=#{traits} WHERE id=#{id}</update>
+  <delete id="delete" parameterType="long">DELETE FROM champion WHERE id=#{id}</delete>
+</mapper>

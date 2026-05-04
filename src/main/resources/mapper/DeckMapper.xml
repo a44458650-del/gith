@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.tft.mapper.DeckMapper">
+  <select id="findAll" resultType="Deck">SELECT * FROM deck ORDER BY win_rate DESC</select>
+  <select id="findHiddenPotential" resultType="Deck">SELECT * FROM deck WHERE hidden_potential=true ORDER BY win_rate DESC</select>
+  <select id="findById" parameterType="long" resultType="Deck">SELECT * FROM deck WHERE id=#{id}</select>
+  <insert id="insert" parameterType="Deck">INSERT INTO deck(name,tier,pick_rate,win_rate,hidden_potential,summary) VALUES(#{name},#{tier},#{pickRate},#{winRate},#{hiddenPotential},#{summary})</insert>
+  <update id="update" parameterType="Deck">UPDATE deck SET name=#{name},tier=#{tier},pick_rate=#{pickRate},win_rate=#{winRate},hidden_potential=#{hiddenPotential},summary=#{summary} WHERE id=#{id}</update>
+  <delete id="delete" parameterType="long">DELETE FROM deck WHERE id=#{id}</delete>
+</mapper>
