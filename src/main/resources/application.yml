@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3306/tft_deck_lab
+    username: tft_user
+    password: tft_pass
+    driver-class-name: org.mariadb.jdbc.Driver
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:sql/schema.sql
+      data-locations: classpath:sql/sample-data.sql
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.tft.vo
+  configuration:
+    map-underscore-to-camel-case: true
+
+server:
+  port: 8080
+
+app:
+  todo:
+    riot-api: "TODO: 2차 작업에서 Riot API 연동 예정"

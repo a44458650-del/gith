@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.tft.mapper.TraitMapper">
+  <select id="findAll" resultType="Trait">SELECT * FROM trait ORDER BY id DESC</select>
+  <select id="findById" parameterType="long" resultType="Trait">SELECT * FROM trait WHERE id=#{id}</select>
+  <insert id="insert" parameterType="Trait">INSERT INTO trait(name,description) VALUES(#{name},#{description})</insert>
+  <update id="update" parameterType="Trait">UPDATE trait SET name=#{name},description=#{description} WHERE id=#{id}</update>
+  <delete id="delete" parameterType="long">DELETE FROM trait WHERE id=#{id}</delete>
+</mapper>
